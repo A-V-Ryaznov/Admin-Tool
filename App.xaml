@@ -2,8 +2,271 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AdminTool"
-             StartupUri="MainWindow.xaml">
+             StartupUri="GUI\Frame\WindowAuthorization.xaml"
+             ShutdownMode="OnLastWindowClose">
     <Application.Resources>
-         
+        
+        <!--Основной цвет-->
+        <SolidColorBrush x:Key="PrimaryColor" Color="White"/>
+        <!--Дополнительный цвет-->
+        <SolidColorBrush x:Key="AdditionalColor" Color="#282E33"/>
+        <!--Оттенок для работы с окном-->
+        <SolidColorBrush x:Key="AdditionalWindowColor" Color="#32393F"/>
+
+        <!--Цвет действия-->
+        <SolidColorBrush x:Key="ActionColor" Color="#2271B1"/>
+        <!--Цвет подсвечивания работы с окном (белый)-->
+        <SolidColorBrush x:Key="ActionWindowWhiteColor">
+            <SolidColorBrush.Color>
+                <Color A="25" R="255" G="255" B="255"/>
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        <!--Цвет подсвечивания работы с окном (темный)-->
+        <SolidColorBrush x:Key="ActionWindowBlackColor">
+            <SolidColorBrush.Color>
+                <Color A="50" R="40" G="46" B="51"/>
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+
+        <!--Действия со страницами-->
+        <!--Кнопка работы с окном (белая)-->
+        <Style x:Key="WindowManagementWhiteButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ActionWindowWhiteColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--Кнопка работы с окном (темная)-->
+        <Style x:Key="WindowManagementBlackButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ActionWindowBlackColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Кнопка работы с окном (изображение)-->
+        <Style x:Key="WindowManagementButtonIcon" TargetType="Image">
+            <Setter Property="Height" Value="10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <!--Страницы-->
+        <!--Заголовок страницы-->
+        <Style x:Key="PagesHeaderTextBlock" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Inter"/>
+                <Setter Property="FontSize" Value="32"/>
+                <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
+        </Style>
+        <!--Текст в странице-->
+        <Style x:Key="PagesTextBlock" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
+        </Style>
+
+        <!--Подзаголовок в странице-->
+        <Style x:Key="PagesSubtitleTextBlock" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="{StaticResource ActionColor}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!--Кнопка подзаголовка в странице-->
+        <Style x:Key="PagesSubtitleButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ActionWindowBlackColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <!--Стандартные-->
+        <!--Поле для ввода-->
+        <Style x:Key="RegularTextBox" TargetType="TextBox">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" CornerRadius="10"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}" 
+                             Background="{TemplateBinding Background}" 
+                             SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Поле для пароля-->
+        <Style x:Key="RegularPasswordBox" TargetType="PasswordBox">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="MaxLength" Value="32"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border x:Name="border" CornerRadius="10"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}" 
+                             Background="{TemplateBinding Background}" 
+                             SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Чекбокс-->
+        <Style x:Key="RegularCheckBox" TargetType="CheckBox">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Height" Value="15"/>
+        </Style>
+
+        <!--Кнопка-->
+        <Style x:Key="RegularButton" TargetType="Button">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="20"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{StaticResource ActionColor}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Меню-->
+        <!--Заголовок меню-->
+        <Style x:Key="MenuHeader" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+        </Style>
+
+        <!--Кнопка меню-->
+        <Style x:Key="MenuButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Текст кнопки меню-->
+        <Style x:Key="MenuButtonText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="TextDecorations" Value="Underline"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Изображение в кнопке меню-->
+        <Style x:Key="MenuButtonIcon" TargetType="Image">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        
+        
+        <!--Авторизация-->
+        <!--Текс авторизации-->
+        <Style x:Key="AuthorizationTextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+
     </Application.Resources>
 </Application>
+    

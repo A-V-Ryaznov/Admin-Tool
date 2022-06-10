@@ -13,16 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AdminTool
+namespace AdminTool.GUI.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для PageOnline.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PageOnline : Page
     {
-        public MainWindow()
+        public PageOnline()
         {
             InitializeComponent();
+        }
+
+        private void btnSaveCountingOnline_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Текущее количество игроков: " + tbCountingOnline.Text, "Потдверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            
         }
     }
 }

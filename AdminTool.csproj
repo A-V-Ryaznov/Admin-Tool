@@ -34,9 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\AdminToolLogo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="GUI\Frame\WindowAuthorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Frame\WindowMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,12 +71,93 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="GUI\Frame\WindowAuthorization.xaml.cs">
+      <DependentUpon>WindowAuthorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frame\WindowMain.xaml.cs">
+      <DependentUpon>WindowMain.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GUI\Pages\PageBlacklist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageGreeting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageModeratorlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageOnline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageStatisticsMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageWhitelist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsAdministrators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsGeneral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsOnline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsPlayers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\Pages\PageBlacklist.xaml.cs">
+      <DependentUpon>PageBlacklist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageGreeting.xaml.cs">
+      <DependentUpon>PageGreeting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageHistory.xaml.cs">
+      <DependentUpon>PageHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageModeratorlist.xaml.cs">
+      <DependentUpon>PageModeratorlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageOnline.xaml.cs">
+      <DependentUpon>PageOnline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageStatisticsMain.xaml.cs">
+      <DependentUpon>PageStatisticsMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageWhitelist.xaml.cs">
+      <DependentUpon>PageWhitelist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsAdministrators.xaml.cs">
+      <DependentUpon>PageStatisticsAdministrators.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsGeneral.xaml.cs">
+      <DependentUpon>PageStatisticsGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsOnline.xaml.cs">
+      <DependentUpon>PageStatisticsOnline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsPlayers.xaml.cs">
+      <DependentUpon>PageStatisticsPlayers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Library\PageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,6 +182,55 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="GUI\Сontrols\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AdminToolLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AdminToolLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExitLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\FullnessLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ModeratorLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WhiteListLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlackListLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HistoryLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StatisticsLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExitLogoBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExitLogoWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RollUpLogoBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RollUpLogoWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExpandBlack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExpandBackBlack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
