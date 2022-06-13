@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AdminTool
+namespace AdminTool.GUI.Frame
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -24,69 +24,109 @@ namespace AdminTool
         public MainWindow()
         {
             InitializeComponent();
-            //this.Visibility = Visibility.Hidden;
-
-            //GUI.Frame.WindowAuthorization windowAuthorization = new GUI.Frame.WindowAuthorization();
-            //windowAuthorization.Show();
-
             MainFrame.Navigate(new GUI.Pages.PageGreeting());
             Library.PageManager.MainFrame = MainFrame;
         }
-
+        //Обработка событий
+        //Кнопка для перехода по статистике
         private void btnStatistics_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new GUI.Pages.PageStatisticsGeneral());
-        }
+            MainFrame.Navigate(new GUI.Pages.PageStatisticsMain());
 
+            tblStatistics.TextDecorations = TextDecorations.Underline;
+
+            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
+        }
+        //Кнопка для перехода в белый список
         private void btnWhiteList_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new GUI.Pages.PageWhitelist());
-        }
 
+            tblWhiteList.TextDecorations = TextDecorations.Underline;
+
+            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
+        }
+        //Кнопка для перехода в черный список
         private void btnBlackList_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new GUI.Pages.PageBlacklist());
-        }
 
+            tblBlackList.TextDecorations = TextDecorations.Underline;
+
+            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
+        }
+        //Кнопка для перехода на список модераторов
         private void btnModeratorList_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new GUI.Pages.PageModeratorlist());
-        }
 
+            tblModeratorList.TextDecorations = TextDecorations.Underline;
+
+            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
+        }
+        //Кнопка для открытия записи в список заполненности
         private void btnOnlineList_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new GUI.Pages.PageOnline());
-        }
 
+            tblOnlineList.TextDecorations = TextDecorations.Underline;
+
+            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblModeratorList.TextDecorations =Library.StyleManager.CreateUnderline();
+            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
+        }
+        //Кнопка для перехода к истории работы с приложением
         private void btnHistory_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new GUI.Pages.PageHistory());
-        }
 
+            tblHistory.TextDecorations = TextDecorations.Underline;
+
+            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblModeratorList.TextDecorations =Library.StyleManager.CreateUnderline();
+            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
+        }
+        //Кнопка для выхода из аккунта
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             GUI.Frame.WindowAuthorization windowAuthorization = new GUI.Frame.WindowAuthorization();
             windowAuthorization.Show();
             this.Close();
         }
-
+        //Кнопки для работы с окном и приложением
+        //Свернуть окно
+        private void btnRollUpWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        //Развернуть окно
         private void btnExpandWindow_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Maximized;
             btnExpandWindow.Visibility = Visibility.Hidden;
             btnStandartSizeWindow.Visibility = Visibility.Visible;
         }
-
-        private void btnСloseWindow_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnRollUpWindow_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
+        //Вернуть окно в стандартный размер
         private void btnStandartSizeWindow_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Normal;
@@ -94,13 +134,16 @@ namespace AdminTool
             btnStandartSizeWindow.Visibility = Visibility.Hidden;
             btnExpandWindow.Visibility = Visibility.Visible;
         }
-
+        //Закрыть окно
+        private void btnСloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
         //Перетаскивать окно
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
 
         }
-
     }
 }

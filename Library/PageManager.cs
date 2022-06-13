@@ -10,7 +10,6 @@ namespace AdminTool.Library
     class PageManager
     {
         public static Frame MainFrame { get; set; }
-
         public static Frame StatisticsFrame { get; set; }
     }
 }

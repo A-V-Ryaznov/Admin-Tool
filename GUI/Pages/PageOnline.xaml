@@ -10,24 +10,32 @@
 
     <Grid>
         <!--Заговок-->
-        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid HorizontalAlignment="Left"
+              VerticalAlignment="Top">
             <TextBlock
                 Text="Заполненность"
                 Style="{StaticResource PagesHeaderTextBlock}"
-                Margin="10,10,0,0"/>
+                Margin="10,10,0,0"
+            />
         </Grid>
-
         <!--Поля для ввода-->
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Vertical" Margin="10,0,0,0">
+        <StackPanel
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Orientation="Vertical"
+            Margin="10,0,0,0">
+            
             <StackPanel Orientation="Horizontal">
 
-                <TextBlock Text="Текущее количество человек на сервере:"
-                       Style="{StaticResource PagesTextBlock}"/>
-                
-                <TextBox x:Name="tbCountingOnline"
-                     Style="{StaticResource RegularTextBox}"
-                     Margin="10,0,0,0"/>
-                
+                <TextBlock
+                    Text="Текущее количество человек на сервере:"
+                    Style="{StaticResource PagesTextBlock}"
+                />
+                <TextBox
+                    x:Name="tbCountingOnline"
+                    Style="{StaticResource RegularTextBox}"
+                    Margin="10,0,0,0"
+                />
             </StackPanel>
             <Button 
                     Margin="0,10,0,0"

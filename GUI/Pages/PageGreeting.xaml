@@ -13,6 +13,7 @@
                    VerticalAlignment="Center"
                    Style="{StaticResource PagesHeaderTextBlock}"
                    Text="Добро пожаловать, %имя фамилия администратора%"
-                   FontSize="24"/>
+                   FontSize="24"
+        />
     </Grid>
 </Page>

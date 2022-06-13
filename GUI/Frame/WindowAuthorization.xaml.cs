@@ -25,20 +25,12 @@ namespace AdminTool.GUI.Frame
             InitializeComponent();
             
         }
-
-        private void btnaAthorization_Click(object sender, RoutedEventArgs e)
-        {
-            
-            AdminTool.MainWindow mainWindow = new MainWindow();
-
-            //this.Owner = mainWindow;
-            mainWindow.Show();
-            this.Close();
-        }
-
+        //Обработка событий
+        //Видомость пароля
         private void cbShowPassword_Click(object sender, RoutedEventArgs e)
         {
             var checkbox = sender as CheckBox;
+
             if (cbShowPassword.IsChecked.Value == true)
             {
                 tbPassword.Text = pbPassword.Password;
@@ -52,17 +44,25 @@ namespace AdminTool.GUI.Frame
                 pbPassword.Visibility = Visibility.Visible;
             }
         }
-
-        private void btnСloseWindow_Click(object sender, RoutedEventArgs e)
+        //Авторизация в системе и сверка данных пользователя
+        private void btnaAthorization_Click(object sender, RoutedEventArgs e)
         {
+            AdminTool.GUI.Frame.MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
 
+        //Работа с окном
+        //Кнопка свернуть
         private void btnRollUpWindow_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
-
+        //Кнопка закрыть
+        private void btnСloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
         //Перетаскивать окно
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

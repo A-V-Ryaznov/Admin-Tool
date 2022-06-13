@@ -9,9 +9,11 @@
       Title="PageStatisticsPlayers">
 
     <Grid>
-        <TextBlock Style="{StaticResource PagesTextBlock}"
-                   Text="Тут будет статистика игроков"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <TextBlock
+            Style="{StaticResource PagesTextBlock}"
+            Text="Тут будет статистика игроков"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+        />
     </Grid>
 </Page>

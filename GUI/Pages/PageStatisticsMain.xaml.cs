@@ -18,9 +18,9 @@ namespace AdminTool.GUI.Pages
     /// <summary>
     /// Логика взаимодействия для PageStatisticsGeneral.xaml
     /// </summary>
-    public partial class PageStatisticsGeneral : Page
+    public partial class PageStatisticsMain : Page
     {
-        public PageStatisticsGeneral()
+        public PageStatisticsMain()
         {
             InitializeComponent();
 
@@ -33,15 +33,12 @@ namespace AdminTool.GUI.Pages
         {
             StatisticsFrame.Navigate(new GUI.Pages.Statistics.PageStatisticsGeneral());
 
-            TextDecorationCollection myCollection = new TextDecorationCollection();
-            TextDecoration textDecoration = new TextDecoration();
-            textDecoration.Pen = new Pen(Brushes.Transparent, 2);
-            textDecoration.Location = TextDecorationLocation.Underline;
+            Library.StyleManager.CreateUnderline();
 
-            myCollection.Add(textDecoration);
-            tblPlayersStatistics.TextDecorations = myCollection;
-            tblOnlineStatistics.TextDecorations = myCollection;
-            tblAdministrationStatistics.TextDecorations = myCollection;
+           
+            tblPlayersStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblOnlineStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblAdministrationStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
 
             tblGeneralStatistics.TextDecorations = TextDecorations.Underline;
         }
@@ -50,19 +47,9 @@ namespace AdminTool.GUI.Pages
         {
             StatisticsFrame.Navigate(new GUI.Pages.Statistics.PageStatisticsPlayers());
 
-
-
-
-            TextDecorationCollection myCollection = new TextDecorationCollection();
-            TextDecoration textDecoration = new TextDecoration();
-            textDecoration.Pen = new Pen(Brushes.Transparent, 2);
-            textDecoration.Location = TextDecorationLocation.Underline;
-
-            myCollection.Add(textDecoration);
-
-            tblGeneralStatistics.TextDecorations = myCollection;
-            tblOnlineStatistics.TextDecorations = myCollection;
-            tblAdministrationStatistics.TextDecorations = myCollection;
+            tblGeneralStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblOnlineStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblAdministrationStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
 
             tblPlayersStatistics.TextDecorations = TextDecorations.Underline;
         }
@@ -71,16 +58,9 @@ namespace AdminTool.GUI.Pages
         {
             StatisticsFrame.Navigate(new GUI.Pages.Statistics.PageStatisticsOnline());
 
-            TextDecorationCollection myCollection = new TextDecorationCollection();
-            TextDecoration textDecoration = new TextDecoration();
-            textDecoration.Pen = new Pen(Brushes.Transparent, 2);
-            textDecoration.Location = TextDecorationLocation.Underline;
-
-            myCollection.Add(textDecoration);
-
-            tblGeneralStatistics.TextDecorations = myCollection;
-            tblPlayersStatistics.TextDecorations = myCollection;
-            tblAdministrationStatistics.TextDecorations = myCollection;
+            tblGeneralStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblPlayersStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblAdministrationStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
 
             tblOnlineStatistics.TextDecorations = TextDecorations.Underline;
         }
@@ -89,16 +69,9 @@ namespace AdminTool.GUI.Pages
         {
             StatisticsFrame.Navigate(new GUI.Pages.Statistics.PageStatisticsAdministrators());
 
-            TextDecorationCollection myCollection = new TextDecorationCollection();
-            TextDecoration textDecoration = new TextDecoration();
-            textDecoration.Pen = new Pen(Brushes.Transparent, 2);
-            textDecoration.Location = TextDecorationLocation.Underline;
-
-            myCollection.Add(textDecoration);
-
-            tblGeneralStatistics.TextDecorations = myCollection;
-            tblPlayersStatistics.TextDecorations = myCollection;
-            tblOnlineStatistics.TextDecorations = myCollection;
+            tblGeneralStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblPlayersStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
+            tblOnlineStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
 
             tblAdministrationStatistics.TextDecorations = TextDecorations.Underline;
         }

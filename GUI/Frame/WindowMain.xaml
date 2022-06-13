@@ -1,9 +1,9 @@
-﻿<Window x:Class="AdminTool.MainWindow"
+﻿<Window x:Class="AdminTool.GUI.Frame.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AdminTool"
+        xmlns:local="clr-namespace:AdminTool.GUI.Frame"
         mc:Ignorable="d"
         Title="Admin Tool" 
         Height="500" 
@@ -13,7 +13,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">   
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -23,7 +23,6 @@
 
             <!--Панель действий и фреймов-->
             <Grid Grid.Column="1">
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="22"/>
                     <RowDefinition Height="*"/>
@@ -31,8 +30,9 @@
 
                 <!--Основной фрейм-->
                 <Frame Grid.Row="1"
-               Name="MainFrame"
-               NavigationUIVisibility="Hidden"/>
+                       Name="MainFrame"
+                       NavigationUIVisibility="Hidden"
+                />
 
                 <!--Действия над окном-->
                 <StackPanel HorizontalAlignment="Right" 
@@ -42,191 +42,242 @@
                         Grid.Row="0"
                         >
                     <!--Свернуть окно-->
-                    <Button x:Name="btnRollUpWindow"
+                    <Button 
+                        x:Name="btnRollUpWindow"
                         Style="{StaticResource WindowManagementBlackButton}"
                         Click="btnRollUpWindow_Click"
                         Margin="0,0,5,0">
-                        <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\RollUpLogoBlack.png"
+                        <Image 
+                            Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\RollUpLogoBlack.png"
                            />
                     </Button>
-
                     <!--Кнопка масштабирования размеров окна-->
                     <Grid>
                         <!--Развернуть окно-->
-                        <Button x:Name="btnExpandWindow"
-                        Style="{StaticResource WindowManagementBlackButton}"
-                        Click="btnExpandWindow_Click"
-                        Margin="0,0,5,0">
-
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExpandBackBlack.png"
-                           />
+                        <Button 
+                            x:Name="btnExpandWindow"
+                            Style="{StaticResource WindowManagementBlackButton}"
+                            Click="btnExpandWindow_Click"
+                            Margin="0,0,5,0">
+                            <Image 
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExpandBackBlack.png"
+                            />
                         </Button>
                         <!--Вернуть окно в стандартный режим-->
-                        <Button x:Name="btnStandartSizeWindow"
-                        Style="{StaticResource WindowManagementBlackButton}"
-                        Click="btnStandartSizeWindow_Click"
-                        Margin="0,0,5,0"
-                        Visibility="Hidden">
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExpandBlack.png"
-                           />
+                        <Button 
+                            x:Name="btnStandartSizeWindow"
+                            Style="{StaticResource WindowManagementBlackButton}"
+                            Click="btnStandartSizeWindow_Click"
+                            Margin="0,0,5,0"
+                            Visibility="Hidden">
+                            <Image 
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExpandBlack.png"
+                            />
                         </Button>
                     </Grid>
-
                     <!--Закрыть окно-->
-                    <Button x:Name="btnСloseWindow"
+                    <Button 
+                        x:Name="btnСloseWindow"
                         Style="{StaticResource WindowManagementBlackButton}"
                         Click="btnСloseWindow_Click">
-                        <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExitLogoBlack.png"
-                           />
+                        <Image 
+                            Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExitLogoBlack.png"
+                        />
                     </Button>
                 </StackPanel>
             </Grid>
 
             <!--Панель Меню-->
-            <Grid Grid.Column="0"
-              Background="{StaticResource AdditionalColor}"
-             >
+            <Grid 
+                Grid.Column="0"
+                Background="{StaticResource AdditionalColor}">
+
                 <!--Панель логотипа и названия-->
-                <StackPanel HorizontalAlignment="Center" 
+                <StackPanel 
+                        HorizontalAlignment="Center" 
                         VerticalAlignment="Top"
                         Orientation="Vertical">
 
 
                     <!--Логотип-->
-                    <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\AdminToolLogo.png"
+                    <Image
+                        Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\AdminToolLogo.png"
                         Height="100"
                         Width="100"
                         Margin="0,10,0,0"
-                       />
+                    />
                     <!--Название программы-->
-                    <TextBlock Text="Admin Tool"
+                    <TextBlock 
+                           Text="Admin Tool"
                            Style="{StaticResource MenuHeader}"
-                           />
+                    />
                 </StackPanel>
                 <!--Панель переключения между страницами-->
-                <StackPanel HorizontalAlignment="Center"
+                <StackPanel
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Orientation="Vertical"
                         Margin="0,100,0,0">
 
                     <!--Статистика-->
-                    <Button x:Name="btnStatistics"
+                    <Button
+                        x:Name="btnStatistics"
                         Style="{StaticResource MenuButton}"
                         Click="btnStatistics_Click">
+
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\StatisticsLogo.png"
-                               Style="{StaticResource MenuButtonIcon}"/>
-                            <TextBlock Text="Статистика"
-                                     Style="{StaticResource MenuButtonText}"/>
+                            <Image 
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\StatisticsLogo.png"
+                                Style="{StaticResource MenuButtonIcon}"
+                            />
+                            <TextBlock
+                                Text="Статистика"
+                                x:Name="tblStatistics"
+                                Style="{StaticResource MenuButtonText}"
+                                />
                         </StackPanel>
                     </Button>
                     <!--Белый список-->
-                    <Button x:Name="btnWhiteList"
-                         Style="{StaticResource MenuButton}"
-                         Click="btnWhiteList_Click">
+                    <Button
+                        x:Name="btnWhiteList"
+                        Style="{StaticResource MenuButton}"
+                        Click="btnWhiteList_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\WhiteListLogo.png"
-                       Style="{StaticResource MenuButtonIcon}"/>
-                            <TextBlock Text="Белый список"
-                           Style="{StaticResource MenuButtonText}"/>
+                            <Image
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\WhiteListLogo.png"
+                                Style="{StaticResource MenuButtonIcon}"
+                            />
+                            <TextBlock
+                                Text="Белый список"
+                                x:Name="tblWhiteList"
+                                Style="{StaticResource MenuButtonText}"
+                            />
                         </StackPanel>
                     </Button>
                     <!--Черный список-->
-                    <Button x:Name="btnBlackList"
-                         Style="{StaticResource MenuButton}"
-                         Click="btnBlackList_Click">
+                    <Button
+                        x:Name="btnBlackList"
+                        Style="{StaticResource MenuButton}"
+                        Click="btnBlackList_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\BlackListLogo.png"
-                       Style="{StaticResource MenuButtonIcon}"/>
-                            <TextBlock Text="Черный список"
-                           Style="{StaticResource MenuButtonText}"/>
+                            <Image
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\BlackListLogo.png"
+                                Style="{StaticResource MenuButtonIcon}"
+                            />
+                            <TextBlock
+                                Text="Черный список"
+                                x:Name="tblBlackList"
+                                Style="{StaticResource MenuButtonText}"
+                            />
                         </StackPanel>
                     </Button>
                     <!--Список модераторов-->
-                    <Button x:Name="btnModeratorList"
-                         Style="{StaticResource MenuButton}"
-                         Click="btnModeratorList_Click">
+                    <Button
+                        x:Name="btnModeratorList"
+                        Style="{StaticResource MenuButton}"
+                        Click="btnModeratorList_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ModeratorLogo.png"
-                       Style="{StaticResource MenuButtonIcon}"/>
-                            <TextBlock Text="Модераторы"
-                           Style="{StaticResource MenuButtonText}"/>
+                            <Image
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ModeratorLogo.png"
+                                Style="{StaticResource MenuButtonIcon}"
+                            />
+                            <TextBlock
+                                Text="Модераторы"
+                                x:Name="tblModeratorList"
+                                Style="{StaticResource MenuButtonText}"
+                            />
                         </StackPanel>
                     </Button>
                     <!--Список заполненности-->
-                    <Button x:Name="btnOnlineList"
-                         Style="{StaticResource MenuButton}"
-                         Click="btnOnlineList_Click">
+                    <Button
+                        x:Name="btnOnlineList"
+                        Style="{StaticResource MenuButton}"
+                        Click="btnOnlineList_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\FullnessLogo.png"
-                       Style="{StaticResource MenuButtonIcon}"/>
-                            <TextBlock Text="Заполненность"
-                           Style="{StaticResource MenuButtonText}"/>
+                            <Image
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\FullnessLogo.png"
+                                Style="{StaticResource MenuButtonIcon}"
+                            />
+                            <TextBlock
+                                Text="Заполненность"
+                                x:Name="tblOnlineList"
+                                Style="{StaticResource MenuButtonText}"
+                            />
                         </StackPanel>
                     </Button>
                     <!--История-->
-                    <Button x:Name="btnHistory"
+                    <Button
+                        x:Name="btnHistory"
                         Style="{StaticResource MenuButton}"
                         Click="btnHistory_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\HistoryLogo.png"
-                       Style="{StaticResource MenuButtonIcon}"/>
-                            <TextBlock Text="История"
-                           Style="{StaticResource MenuButtonText}"/>
+                            <Image
+                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\HistoryLogo.png"
+                                Style="{StaticResource MenuButtonIcon}"
+                            />
+                            <TextBlock
+                                Text="История"
+                                x:Name="tblHistory"
+                                Style="{StaticResource MenuButtonText}"
+                            />
                         </StackPanel>
                     </Button>
                 </StackPanel>
 
                 <!--Выход из учетной записи-->
-                <Button x:Name="btnExit"
-                     Style="{StaticResource MenuButton}"
-                     Click="btnExit_Click"
-                     VerticalAlignment="Bottom"
-                     Width="125">
+                <Button
+                    x:Name="btnExit"
+                    Style="{StaticResource MenuButton}"
+                    Click="btnExit_Click"
+                    VerticalAlignment="Bottom"
+                    Width="125">
 
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExitLogo.png"
-                       Style="{StaticResource MenuButtonIcon}"/>
-                        <TextBlock Text="Выход"
-                           Style="{StaticResource MenuButtonText}"/>
+                        <Image 
+                            Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExitLogo.png"
+                            Style="{StaticResource MenuButtonIcon}"
+                        />
+                        <TextBlock
+                            Text="Выход"
+                            Style="{StaticResource MenuButtonText}"
+                        />
                     </StackPanel>
-
                 </Button>
-
-
-
-
             </Grid>
-
-
         </Grid>
 
-
-
         <!--Рамка лево-->
-        <Rectangle  Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Left"
-            Cursor="SizeWE" Fill="{StaticResource AdditionalWindowColor}"
-            />
+        <Rectangle
+            Width="5"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Left"
+            Fill="{StaticResource AdditionalWindowColor}"
+        />
 
         <!--Рамка право-->
-        <Rectangle  Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Right"
-            Cursor="SizeWE" Fill="{StaticResource AdditionalWindowColor}"
+        <Rectangle
+            Width="5"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Right"
+            Fill="{StaticResource AdditionalWindowColor}"
             Grid.ColumnSpan="2"
-           />
-        
+        />
+
         <!--Рамка верх-->
-        <Rectangle  Height="5" VerticalAlignment="Top" HorizontalAlignment="Stretch"
-            Cursor="SizeNS" Fill="{StaticResource AdditionalWindowColor}"
+        <Rectangle
+            Height="5"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Stretch"
+            Fill="{StaticResource AdditionalWindowColor}"
             Grid.ColumnSpan="6"
-           />
+        />
         <!--Рамка низ-->
-        <Rectangle  Height="5" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
-            Cursor="SizeNS" Fill="{StaticResource AdditionalWindowColor}"
+        <Rectangle
+            Height="5"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Stretch"
+            Fill="{StaticResource AdditionalWindowColor}"
             Grid.ColumnSpan="2"
-            />
-      
-        
+        />
     </Grid>
-    
-    
 </Window>

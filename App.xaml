@@ -12,7 +12,6 @@
         <SolidColorBrush x:Key="AdditionalColor" Color="#282E33"/>
         <!--Оттенок для работы с окном-->
         <SolidColorBrush x:Key="AdditionalWindowColor" Color="#32393F"/>
-
         <!--Цвет действия-->
         <SolidColorBrush x:Key="ActionColor" Color="#2271B1"/>
         <!--Цвет подсвечивания работы с окном (белый)-->
@@ -71,7 +70,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
         <!--Кнопка работы с окном (изображение)-->
         <Style x:Key="WindowManagementButtonIcon" TargetType="Image">
             <Setter Property="Height" Value="10"/>
@@ -92,16 +90,19 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
         </Style>
-
         <!--Подзаголовок в странице-->
         <Style x:Key="PagesSubtitleTextBlock" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Inter"/>
             <Setter Property="FontSize" Value="24"/>
-            <Setter Property="Foreground" Value="{StaticResource ActionColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource ActionColor}"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
-
         <!--Кнопка подзаголовка в странице-->
         <Style x:Key="PagesSubtitleButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -117,14 +118,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource ActionWindowBlackColor}"/>
-                </Trigger>
-            </Style.Triggers>
         </Style>
-
 
         <!--Стандартные-->
         <!--Поле для ввода-->
@@ -179,7 +173,6 @@
             <Setter Property="Width" Value="15"/>
             <Setter Property="Height" Value="15"/>
         </Style>
-
         <!--Кнопка-->
         <Style x:Key="RegularButton" TargetType="Button">
             <Setter Property="Width" Value="200"/>
@@ -212,7 +205,6 @@
             <Setter Property="FontSize" Value="32"/>
             <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
         </Style>
-
         <!--Кнопка меню-->
         <Style x:Key="MenuButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -230,7 +222,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <!--Текст кнопки меню-->
         <Style x:Key="MenuButtonText" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
@@ -242,18 +233,16 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="TextDecorations" Value="Underline"/>
+                    <Setter Property="Foreground" Value="{StaticResource ActionColor}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
-
         <!--Изображение в кнопке меню-->
         <Style x:Key="MenuButtonIcon" TargetType="Image">
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-        
         
         <!--Авторизация-->
         <!--Текс авторизации-->
@@ -265,8 +254,6 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-
-
     </Application.Resources>
 </Application>
     

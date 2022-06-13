@@ -9,9 +9,11 @@
       Title="PageStatisticsAdministrators">
 
     <Grid>
-        <TextBlock Style="{StaticResource PagesTextBlock}"
-                   Text="Тут будет статистика администрации"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <TextBlock 
+            Style="{StaticResource PagesTextBlock}"
+            Text="Тут будет статистика администрации"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+        />
     </Grid>
 </Page>
