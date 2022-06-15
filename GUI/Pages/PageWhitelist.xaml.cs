@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminTool.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,39 @@ namespace AdminTool.GUI.Pages
         public PageWhitelist()
         {
             InitializeComponent();
+
+            try
+            {
+                dgWhiteList.ItemsSource = AdminToolEntities.GetContext().Player.ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Случилась непредвиденная ошибка связанная с базой данных", "Ошибка подключения", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnClickOnMe_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Я работаю", "Оно живое");
+        }
+
+        private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            Library.PageManager.MainFrame.Navigate(new GUI.Pages.WorkingWithDatabase.PagaWhitelistAddPlayer());
+        }
+
+        private void btnStartSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                AdminToolEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                dgWhiteList.ItemsSource = AdminToolEntities.GetContext().Player.ToList();
+            }
         }
     }
 }

@@ -26,6 +26,72 @@
                 <Color A="50" R="40" G="46" B="51"/>
             </SolidColorBrush.Color>
         </SolidColorBrush>
+        <!--Цвет подсвечивания при выделении dataGrid-->
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}">
+            <SolidColorBrush.Color>
+                <Color A="255" R="34" G="113" B="177"/>
+            </SolidColorBrush.Color>
+        </SolidColorBrush>
+        
+
+        <!--Действия с базой данных-->
+        <!--Кнопка для данных-->
+        <!--Кнопка работы с бд-->
+        <Style x:Key="DatabaseButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource ActionWindowBlackColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--Кнопка работы с бд (изображение)-->
+        <Style x:Key="DatabaseButtonIcon" TargetType="Image">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <!--dataGrid-->
+        <Style x:Key="DataGridRegular" TargetType="DataGrid">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="AlternatingRowBackground" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource AdditionalColor}"/>
+            <!--<Setter Property="HeadersVisibility" Value="Column"/>-->
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="CanUserResizeColumns" Value="False"/>
+
+
+        </Style>
+        <!--dataGrid заголовок-->
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource ActionColor}"/>
+        </Style>
 
         <!--Действия со страницами-->
         <!--Кнопка работы с окном (белая)-->

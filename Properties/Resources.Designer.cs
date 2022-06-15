@@ -83,6 +83,16 @@ namespace AdminTool.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DeleteLogo {
+            get {
+                object obj = ResourceManager.GetObject("DeleteLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ExitLogo {
             get {
                 object obj = ResourceManager.GetObject("ExitLogo", resourceCulture);
@@ -153,6 +163,16 @@ namespace AdminTool.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap InformationLogo {
+            get {
+                object obj = ResourceManager.GetObject("InformationLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ModeratorLogo {
             get {
                 object obj = ResourceManager.GetObject("ModeratorLogo", resourceCulture);
@@ -196,6 +216,16 @@ namespace AdminTool.Properties {
         internal static System.Drawing.Bitmap WhiteListLogo {
             get {
                 object obj = ResourceManager.GetObject("WhiteListLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap СhangeLogo {
+            get {
+                object obj = ResourceManager.GetObject("СhangeLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

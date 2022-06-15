@@ -6,15 +6,117 @@
       xmlns:local="clr-namespace:AdminTool.GUI.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageWhitelist">
+      Title="PageWhitelist"
+      IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        <TextBlock
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        
+        <!--Заголовок-->
+        <Grid Grid.Row="0">
+            <TextBlock
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Text="Белый список"
                 Style="{StaticResource PagesHeaderTextBlock}"
                 Margin="10,10,0,0"
         />
+        </Grid>
+        <!--Таблица-->
+        <Grid Grid.Row="1">
+            <DataGrid 
+                x:Name="dgWhiteList"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                Style="{StaticResource DataGridRegular}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="ID"
+                        Binding="{Binding PlayerID}"
+                        Width="{Binding PlayerID}"/>
+                    <DataGridTextColumn
+                        Header="Имя пользователя"
+                        Binding="{Binding PlayerNickname}"
+                        Width="{Binding PlayerNickname}"/>
+                    <DataGridTextColumn
+                        Header="Steam64"
+                        Binding="{Binding Steam64}"
+                        Width="{Binding Steam64}"/>
+                    <DataGridTemplateColumn Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--Панель с действиями-->
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,0,10,0">
+                                    <!--Просмотреть полные данные-->
+                                    <Button 
+                                        x:Name="btnGetInformation"
+                                        Style="{StaticResource DatabaseButton}"
+                                        Click="btnClickOnMe_Click">
+                                        <!--Вставить фото-->
+                                        <Image
+                                          
+                                            Style="{StaticResource DatabaseButtonIcon}"
+                                         />
+                                    </Button>
+                                    <!--Изменить данные-->
+                                    <Button 
+                                        Margin="10,0,0,0"
+                                        x:Name="btnChangeData"
+                                        Style="{StaticResource DatabaseButton}"
+                                        Click="btnClickOnMe_Click">
+                                        <!--Вставить фото-->
+                                        <Image
+                                            
+                                            Style="{StaticResource DatabaseButtonIcon}"
+                                         />
+                                    </Button>
+                                    <!--Удалить запись-->
+                                    <Button 
+                                        Margin="10,0,0,0"
+                                        x:Name="btnDeleteData"
+                                        Style="{StaticResource DatabaseButton}"
+                                         Click="btnClickOnMe_Click">
+                                        <!--Вставить фото-->
+                                        <Image
+                                           
+                                            Style="{StaticResource DatabaseButtonIcon}"
+                                         />
+                                    </Button>
+                                </StackPanel>
+                                
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!--Действия-->
+        <Grid Grid.Row="2">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+
+                <Button x:Name="btnAddPlayer"
+                        Style="{StaticResource RegularButton}"
+                        Content="Добавить"
+                        Click="btnAddPlayer_Click"
+                />
+                <Button x:Name="btnStartSearch"
+                        Style="{StaticResource RegularButton}"
+                        Content="Поиск"
+                        Margin="70,0,0,0"
+                        Click="btnStartSearch_Click"
+                />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
