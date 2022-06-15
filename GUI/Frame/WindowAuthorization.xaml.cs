@@ -53,7 +53,6 @@ namespace AdminTool.GUI.Frame
                 {
                     if (item.Username.Trim() == tbUsername.Text.Trim())
                     {
-
                         if (tbPassword.Text.Trim() == item.Password.Trim() || pbPassword.Password.Trim() == item.Password.Trim())
                         {
                             AdminTool.GUI.Frame.MainWindow mainWindow = new MainWindow();

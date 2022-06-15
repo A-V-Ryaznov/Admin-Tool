@@ -39,7 +39,7 @@
                         Click="btnRollUpWindow_Click"
                         Margin="0,0,5,0">
                     <Image 
-                        Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\RollUpLogoWhite.png"
+                        Source="/Resources/RollUpLogoWhite.png"
                     />
                 </Button>
                 <!--Закрыть окно-->
@@ -48,7 +48,7 @@
                         Style="{StaticResource WindowManagementWhiteButton}"
                         Click="btnСloseWindow_Click">
                     <Image 
-                        Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\ExitLogoWhite.png"
+                        Source="/Resources/ExitLogoWhite.png"
                     />
                 </Button>
             </StackPanel>
@@ -66,7 +66,7 @@
                 Margin="0">
                 <!--Логотип-->
                 <Image 
-                    Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\AdminToolLogo.png"
+                    Source="/Resources/AdminToolLogo.png"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"
                     Height="100"
