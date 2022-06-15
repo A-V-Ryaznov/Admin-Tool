@@ -23,6 +23,12 @@ namespace AdminTool.GUI.Pages
         public PageGreeting()
         {
             InitializeComponent();
+            
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            tblGreeting.Text = $"Добро пожаловать, {Library.UserManager.UserFirstName} {Library.UserManager.UserLastName}";
         }
     }
 }

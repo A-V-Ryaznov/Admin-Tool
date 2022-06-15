@@ -17,12 +17,7 @@ namespace AdminTool.Data
         public int ModeratorID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Surname { get; set; }
-        public int PlayerID { get; set; }
+        public string Steam64 { get; set; }
         public System.DateTime AppointmentDate { get; set; }
-        public int IdUserAppointed { get; set; }
-    
-        public virtual Player Player { get; set; }
-        public virtual User User { get; set; }
     }
 }

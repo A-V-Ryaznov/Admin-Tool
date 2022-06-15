@@ -4,25 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9e154fe452af4e5e95a80a7a4fa04c4a" Name="Diagram1">
-        <EntityTypeShape EntityType="AdminToolModel.History" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminToolModel.ModeratorList" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminToolModel.OnlineList" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminToolModel.Player" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminToolModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminToolModel.TableName" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminToolModel.TypeHistory" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdminToolModel.User" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <AssociationConnector Association="AdminToolModel.FK_History_TableName" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_History_TypeHistory" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_History_User" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_ModeratorList_Player" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_ModeratorList_User" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_OnlineList_User" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_Player_User" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_Player_User1" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_Player_User2" ManuallyRouted="false" />
-        <AssociationConnector Association="AdminToolModel.FK_Player_User3" ManuallyRouted="false" />
+      <Diagram DiagramId="1029dc03b93e4f97984e3d894d9f37a0" Name="Diagram1">
+        <EntityTypeShape EntityType="AdminToolModel.Blacklist" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdminToolModel.ModeratorList" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdminToolModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdminToolModel.User" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdminToolModel.Whitelist" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

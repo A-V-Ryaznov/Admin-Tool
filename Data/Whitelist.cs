@@ -12,13 +12,11 @@ namespace AdminTool.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class OnlineList
+    public partial class Whitelist
     {
-        public int OnlineListID { get; set; }
-        public int OnServer { get; set; }
-        public System.DateTime DateTime { get; set; }
-        public int IdUserAddedMeaning { get; set; }
-    
-        public virtual User User { get; set; }
+        public int PlayerID { get; set; }
+        public string PlayerNickname { get; set; }
+        public string Steam64 { get; set; }
+        public System.DateTime RegistrationDate { get; set; }
     }
 }

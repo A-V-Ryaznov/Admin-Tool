@@ -119,24 +119,6 @@
                         Orientation="Vertical"
                         Margin="0,100,0,0">
 
-                    <!--Статистика-->
-                    <Button
-                        x:Name="btnStatistics"
-                        Style="{StaticResource MenuButton}"
-                        Click="btnStatistics_Click">
-
-                        <StackPanel Orientation="Horizontal">
-                            <Image 
-                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\StatisticsLogo.png"
-                                Style="{StaticResource MenuButtonIcon}"
-                            />
-                            <TextBlock
-                                Text="Статистика"
-                                x:Name="tblStatistics"
-                                Style="{StaticResource MenuButtonText}"
-                                />
-                        </StackPanel>
-                    </Button>
                     <!--Белый список-->
                     <Button
                         x:Name="btnWhiteList"
@@ -184,40 +166,6 @@
                             <TextBlock
                                 Text="Модераторы"
                                 x:Name="tblModeratorList"
-                                Style="{StaticResource MenuButtonText}"
-                            />
-                        </StackPanel>
-                    </Button>
-                    <!--Список заполненности-->
-                    <Button
-                        x:Name="btnOnlineList"
-                        Style="{StaticResource MenuButton}"
-                        Click="btnOnlineList_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Image
-                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\FullnessLogo.png"
-                                Style="{StaticResource MenuButtonIcon}"
-                            />
-                            <TextBlock
-                                Text="Заполненность"
-                                x:Name="tblOnlineList"
-                                Style="{StaticResource MenuButtonText}"
-                            />
-                        </StackPanel>
-                    </Button>
-                    <!--История-->
-                    <Button
-                        x:Name="btnHistory"
-                        Style="{StaticResource MenuButton}"
-                        Click="btnHistory_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Image
-                                Source="C:\Users\user\Desktop\!C#\AdminTool\AdminTool\Resources\HistoryLogo.png"
-                                Style="{StaticResource MenuButtonIcon}"
-                            />
-                            <TextBlock
-                                Text="История"
-                                x:Name="tblHistory"
                                 Style="{StaticResource MenuButtonText}"
                             />
                         </StackPanel>

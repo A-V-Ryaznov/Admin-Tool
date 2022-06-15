@@ -1,4 +1,4 @@
-﻿<Page x:Class="AdminTool.GUI.Pages.WorkingWithDatabase.PagaWhitelistAddPlayer"
+﻿<Page x:Class="AdminTool.GUI.Pages.WorkingWithDatabase.PagaModeratorlistAddPlayer"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AdminTool.GUI.Pages.WorkingWithDatabase"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PagaWhitelistAddPlayer">
+      Title="PagaModeratorlistAddPlayer">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,10 +18,10 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Заголовок-->
         <TextBlock 
-            Text="Работа с игроком из белого списка"
+            Text="Работа с модератором"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -39,12 +39,22 @@
             Grid.Column="0"
             >
             <TextBlock
-                Text="Имя пользователя:"
+                Text="Имя:"
+                Style="{StaticResource PagesTextBlock}"
+            />
+            <TextBlock
+                Margin="0,10,0,0"
+                Text="Фамилия:"
                 Style="{StaticResource PagesTextBlock}"
             />
             <TextBlock
                 Margin="0,10,0,0"
                 Text="Steam64"
+                Style="{StaticResource PagesTextBlock}"
+            />
+            <TextBlock
+                Margin="0,10,0,0"
+                Text="Дата назначения:"
                 Style="{StaticResource PagesTextBlock}"
             />
         </StackPanel>
@@ -57,14 +67,25 @@
             Grid.Column="1"
             >
             <TextBox
-                x:Name="tbPlayerName"
-                Text="{Binding PlayerNickname}"
+                x:Name="tbFirstName"
+                Text="{Binding FirstName}"
+                Style="{StaticResource RegularTextBox}"/>
+            <TextBox
+                x:Name="tbLastName"
+                Text="{Binding LastName}"
+                Margin="0,10,0,0"
                 Style="{StaticResource RegularTextBox}"/>
             <TextBox
                 x:Name="tbSteam64"
                 Text="{Binding Steam64}"
                 Margin="0,10,0,0"
                 Style="{StaticResource RegularTextBox}"/>
+            <TextBlock
+                Margin="0,10,0,0"
+                x:Name="tblAppointmentDate"
+                Text="{Binding AppointmentDate}"
+                Style="{StaticResource PagesTextBlock}"
+            />
         </StackPanel>
 
         <Button x:Name="btnSaveData"

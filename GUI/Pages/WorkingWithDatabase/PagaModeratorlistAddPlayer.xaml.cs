@@ -1,5 +1,4 @@
-﻿using AdminTool.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,42 +12,47 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdminTool.Data;
 
 namespace AdminTool.GUI.Pages.WorkingWithDatabase
 {
     /// <summary>
-    /// Логика взаимодействия для PagaWhitelistAddPlayer.xaml
+    /// Логика взаимодействия для PagaModeratorlistAddPlayer.xaml
     /// </summary>
-    public partial class PagaWhitelistAddPlayer : Page
+    public partial class PagaModeratorlistAddPlayer : Page
     {
-        //Создаем объект класса, который позволит произвести запись.
-        private Whitelist _currentPlayer = new Whitelist();
-        public PagaWhitelistAddPlayer(Whitelist selectedPlayer)
+        private ModeratorList _currentPlayer = new ModeratorList();
+        public PagaModeratorlistAddPlayer(ModeratorList selectedPlayer)
         {
             InitializeComponent();
 
             if (selectedPlayer != null)
             {
                 _currentPlayer = selectedPlayer;
+
+                tblAppointmentDate.Text = _currentPlayer.AppointmentDate.ToString();
             }
 
             DataContext = _currentPlayer;
         }
-
         private void btnSaveData_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder error = new StringBuilder();
 
-            if (string.IsNullOrWhiteSpace(_currentPlayer.PlayerNickname))
+            if (string.IsNullOrWhiteSpace(_currentPlayer.FirstName))
             {
-                error.AppendLine("Укажите имя пользователя");
+                error.AppendLine("Укажите имя модератора");
+            }
+            if (string.IsNullOrWhiteSpace(_currentPlayer.LastName))
+            {
+                error.AppendLine("Укажите фамилию модератора");
             }
             if (_currentPlayer.Steam64 == null)
             {
                 error.AppendLine("Введите Steam64");
 
             }
-            if(_currentPlayer.Steam64 != null)
+            if (_currentPlayer.Steam64 != null)
             {
                 if (_currentPlayer.Steam64.Length > 17 || _currentPlayer.Steam64.Length < 17)
                 {
@@ -67,23 +71,23 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
 
             if (error.Length > 0)
             {
-                MessageBox.Show(error.ToString(),"Были найдены ошибки записи",MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(error.ToString(), "Были найдены ошибки записи", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (MessageBox.Show($"Вы действительно хотите записать игрока {_currentPlayer.PlayerNickname}", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы действительно хотите записать игрока {_currentPlayer.LastName}", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                if (_currentPlayer.PlayerID == 0)
+                if (_currentPlayer.ModeratorID == 0)
                 {
                     DateTime thisDay = DateTime.Today;
-                    _currentPlayer.RegistrationDate = thisDay;
-                    AdminToolEntities.GetContext().Whitelist.Add(_currentPlayer);
+                    _currentPlayer.AppointmentDate = thisDay;
+                    AdminToolEntities.GetContext().ModeratorList.Add(_currentPlayer);
                 }
                 try
                 {
                     AdminToolEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Информация сохранена","Сообщение",MessageBoxButton.OK, MessageBoxImage.Information);
-                    Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageWhitelist());
+                    MessageBox.Show("Информация сохранена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageModeratorlist());
                 }
                 catch (Exception ex)
                 {
@@ -94,11 +98,11 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show($"Вы действительно хотите покинуть страницу работы с пользователем? Результаты вашей работы не будут сохранены", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы действительно хотите покинуть страницу работы с пользователем? Результаты вашей работы не будут сохранены", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageWhitelist());
+                Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageModeratorlist());
             }
-            
+
         }
     }
 }

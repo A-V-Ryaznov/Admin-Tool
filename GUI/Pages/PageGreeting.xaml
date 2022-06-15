@@ -6,14 +6,16 @@
       xmlns:local="clr-namespace:AdminTool.GUI.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="640"
-      Title="PageGreeting">
+      Title="PageGreeting"
+      IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <TextBlock HorizontalAlignment="Center"
+                   x:Name="tblGreeting"
                    VerticalAlignment="Center"
                    Style="{StaticResource PagesHeaderTextBlock}"
-                   Text="Добро пожаловать, %имя фамилия администратора%"
                    FontSize="24"
+                   Text="$Добро пожаловать, администратор"
         />
     </Grid>
 </Page>

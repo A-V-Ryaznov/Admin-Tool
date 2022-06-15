@@ -6,15 +6,85 @@
       xmlns:local="clr-namespace:AdminTool.GUI.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageBlacklist">
+      Title="PageBlacklist"
+      IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        <TextBlock
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <!--Заголовок-->
+        <Grid Grid.Row="0">
+            <TextBlock
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Text="Черный список"
                 Style="{StaticResource PagesHeaderTextBlock}"
                 Margin="10,10,0,0"
         />
+        </Grid>
+        <!--Таблица-->
+        <Grid Grid.Row="1">
+            <DataGrid 
+                x:Name="dgBlackList"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                Style="{StaticResource DataGridRegular}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="ID"
+                        Binding="{Binding PlayerID}"
+                        Width="{Binding PlayerID}"/>
+                    <DataGridTextColumn
+                        Header="Имя пользователя"
+                        Binding="{Binding PlayerNickname}"
+                        Width="{Binding PlayerNickname}"/>
+                    <DataGridTextColumn
+                        Header="Steam64"
+                        Binding="{Binding Steam64}"
+                        Width="{Binding Steam64}"/>
+                    <DataGridTemplateColumn Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--Панель с действиями-->
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,0,10,0">
+                                    <!--Изменить данные-->
+                                    <Button 
+                                        Margin="10,0,0,0"
+                                        x:Name="btnChangeData"
+                                        Style="{StaticResource DatabaseButton}"
+                                        Click="btnChangeData_Click">
+                                        <!--Вставить фото-->
+                                        <Image
+                                            Source="/Resources/СhangeLogo.png"
+                                            Style="{StaticResource DatabaseButtonIcon}"
+                                         />
+                                    </Button>
+                                    <!--Удалить запись-->
+                                    <Button 
+                                        Margin="10,0,0,0"
+                                        x:Name="btnDeleteData"
+                                        Style="{StaticResource DatabaseButton}"
+                                        Click="btnDeleteData_Click">
+                                        <!--Вставить фото-->
+                                        <Image
+                                           Source="/Resources/DeleteLogo.png"
+                                           Style="{StaticResource DatabaseButtonIcon}"
+                                         />
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>

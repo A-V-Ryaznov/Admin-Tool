@@ -12,8 +12,7 @@ namespace AdminTool.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-   
+    
     public partial class AdminToolEntities : DbContext
     {
         private static AdminToolEntities _context;
@@ -29,18 +28,16 @@ namespace AdminTool.Data
             }
             return _context;
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<History> History { get; set; }
+        public virtual DbSet<Blacklist> Blacklist { get; set; }
         public virtual DbSet<ModeratorList> ModeratorList { get; set; }
-        public virtual DbSet<OnlineList> OnlineList { get; set; }
-        public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TableName> TableName { get; set; }
-        public virtual DbSet<TypeHistory> TypeHistory { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Whitelist> Whitelist { get; set; }
     }
 }

@@ -118,6 +118,7 @@
                     <TextBox
                         x:Name="tbPassword"
                         Text=""
+                        MaxLength="32"
                         FontSize="10"
                         Style="{StaticResource RegularTextBox}"
                         Visibility="Hidden"

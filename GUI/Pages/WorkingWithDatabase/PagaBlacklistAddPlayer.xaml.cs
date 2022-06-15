@@ -17,19 +17,20 @@ using System.Windows.Shapes;
 namespace AdminTool.GUI.Pages.WorkingWithDatabase
 {
     /// <summary>
-    /// Логика взаимодействия для PagaWhitelistAddPlayer.xaml
+    /// Логика взаимодействия для PagaBlacklistAddPlayer.xaml
     /// </summary>
-    public partial class PagaWhitelistAddPlayer : Page
+    public partial class PagaBlacklistAddPlayer : Page
     {
-        //Создаем объект класса, который позволит произвести запись.
-        private Whitelist _currentPlayer = new Whitelist();
-        public PagaWhitelistAddPlayer(Whitelist selectedPlayer)
+        private Blacklist _currentPlayer = new Blacklist();
+        public PagaBlacklistAddPlayer(Blacklist selectedPlayer)
         {
             InitializeComponent();
 
             if (selectedPlayer != null)
             {
                 _currentPlayer = selectedPlayer;
+
+                tblDateTimeBanned.Text = _currentPlayer.DateTimeBanned.ToString();
             }
 
             DataContext = _currentPlayer;
@@ -48,7 +49,19 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
                 error.AppendLine("Введите Steam64");
 
             }
-            if(_currentPlayer.Steam64 != null)
+            if(_currentPlayer.ReasonForBlocking == null)
+            {
+                error.AppendLine("Укажите причину блокировки");
+            }
+            if (_currentPlayer.ReasonForBlocking != null)
+            {
+                if (_currentPlayer.ReasonForBlocking.Length > 40)
+                {
+                    error.AppendLine("Причина блокировки может быть не больше 40 символов");
+                }
+            }
+
+            if (_currentPlayer.Steam64 != null)
             {
                 if (_currentPlayer.Steam64.Length > 17 || _currentPlayer.Steam64.Length < 17)
                 {
@@ -67,7 +80,7 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
 
             if (error.Length > 0)
             {
-                MessageBox.Show(error.ToString(),"Были найдены ошибки записи",MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(error.ToString(), "Были найдены ошибки записи", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -75,15 +88,13 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
             {
                 if (_currentPlayer.PlayerID == 0)
                 {
-                    DateTime thisDay = DateTime.Today;
-                    _currentPlayer.RegistrationDate = thisDay;
-                    AdminToolEntities.GetContext().Whitelist.Add(_currentPlayer);
+                    AdminToolEntities.GetContext().Blacklist.Add(_currentPlayer);
                 }
                 try
                 {
                     AdminToolEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Информация сохранена","Сообщение",MessageBoxButton.OK, MessageBoxImage.Information);
-                    Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageWhitelist());
+                    MessageBox.Show("Информация сохранена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageBlacklist());
                 }
                 catch (Exception ex)
                 {
@@ -94,11 +105,12 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show($"Вы действительно хотите покинуть страницу работы с пользователем? Результаты вашей работы не будут сохранены", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы действительно хотите покинуть страницу работы с пользователем? Результаты вашей работы не будут сохранены", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageWhitelist());
+                Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageBlacklist());
             }
-            
+
         }
     }
 }
+

@@ -55,26 +55,15 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
                                     Margin="0,0,10,0">
-                                    <!--Просмотреть полные данные-->
-                                    <Button 
-                                        x:Name="btnGetInformation"
-                                        Style="{StaticResource DatabaseButton}"
-                                        Click="btnClickOnMe_Click">
-                                        <!--Вставить фото-->
-                                        <Image
-                                          
-                                            Style="{StaticResource DatabaseButtonIcon}"
-                                         />
-                                    </Button>
                                     <!--Изменить данные-->
                                     <Button 
                                         Margin="10,0,0,0"
                                         x:Name="btnChangeData"
                                         Style="{StaticResource DatabaseButton}"
-                                        Click="btnClickOnMe_Click">
+                                        Click="btnChangeData_Click">
                                         <!--Вставить фото-->
                                         <Image
-                                            
+                                            Source="/Resources/СhangeLogo.png"
                                             Style="{StaticResource DatabaseButtonIcon}"
                                          />
                                     </Button>
@@ -83,11 +72,11 @@
                                         Margin="10,0,0,0"
                                         x:Name="btnDeleteData"
                                         Style="{StaticResource DatabaseButton}"
-                                         Click="btnClickOnMe_Click">
+                                        Click="btnDeleteData_Click">
                                         <!--Вставить фото-->
                                         <Image
-                                           
-                                            Style="{StaticResource DatabaseButtonIcon}"
+                                           Source="/Resources/DeleteLogo.png"
+                                           Style="{StaticResource DatabaseButtonIcon}"
                                          />
                                     </Button>
                                 </StackPanel>
@@ -109,12 +98,6 @@
                         Style="{StaticResource RegularButton}"
                         Content="Добавить"
                         Click="btnAddPlayer_Click"
-                />
-                <Button x:Name="btnStartSearch"
-                        Style="{StaticResource RegularButton}"
-                        Content="Поиск"
-                        Margin="70,0,0,0"
-                        Click="btnStartSearch_Click"
                 />
             </StackPanel>
         </Grid>

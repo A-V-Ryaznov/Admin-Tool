@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdminTool;
+using AdminTool.Data;
 
 namespace AdminTool.GUI.Frame
 {
@@ -23,7 +24,6 @@ namespace AdminTool.GUI.Frame
         public WindowAuthorization()
         {
             InitializeComponent();
-            
         }
         //Обработка событий
         //Видомость пароля
@@ -47,9 +47,33 @@ namespace AdminTool.GUI.Frame
         //Авторизация в системе и сверка данных пользователя
         private void btnaAthorization_Click(object sender, RoutedEventArgs e)
         {
-            AdminTool.GUI.Frame.MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            try
+            {
+                foreach (var item in AdminToolEntities.GetContext().User)
+                {
+                    if (item.Username.Trim() == tbUsername.Text.Trim())
+                    {
+
+                        if (tbPassword.Text.Trim() == item.Password.Trim() || pbPassword.Password.Trim() == item.Password.Trim())
+                        {
+                            AdminTool.GUI.Frame.MainWindow mainWindow = new MainWindow();
+                            Library.UserManager.UserFirstName = item.FirstName.Trim();
+                            Library.UserManager.UserLastName = item.LastName.Trim();
+
+                            mainWindow.Show();
+                            this.Close();
+                        }
+                    }
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+            
         }
 
         //Работа с окном

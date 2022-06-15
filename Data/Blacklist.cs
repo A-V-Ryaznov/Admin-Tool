@@ -12,18 +12,13 @@ namespace AdminTool.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class TypeHistory
+    public partial class Blacklist
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TypeHistory()
-        {
-            this.History = new HashSet<History>();
-        }
-    
-        public int TypeHistoryID { get; set; }
-        public string Description { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<History> History { get; set; }
+        public int PlayerID { get; set; }
+        public string Steam64 { get; set; }
+        public string PlayerNickname { get; set; }
+        public string ReasonForBlocking { get; set; }
+        public System.DateTime DateTimeBanned { get; set; }
+        public Nullable<System.DateTime> DateTimeUnbanned { get; set; }
     }
 }
