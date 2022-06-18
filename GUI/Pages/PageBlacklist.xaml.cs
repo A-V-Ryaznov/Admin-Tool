@@ -45,33 +45,19 @@ namespace AdminTool.GUI.Pages
 
             if (MessageBox.Show($"Вы действительно хотите разблокировать {blacklistPlayer.PlayerNickname}", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                try
-                {
-                    whitelistPlayer.PlayerNickname = blacklistPlayer.PlayerNickname;
-                    whitelistPlayer.Steam64 = blacklistPlayer.Steam64;
-                    DateTime thisDay = DateTime.Now;
-                    whitelistPlayer.RegistrationDate = thisDay;
+                whitelistPlayer.PlayerNickname = blacklistPlayer.PlayerNickname;
+                whitelistPlayer.Steam64 = blacklistPlayer.Steam64;
+                DateTime thisDay = DateTime.Now;
+                whitelistPlayer.RegistrationDate = thisDay;
 
-                    AdminToolEntities.GetContext().Whitelist.Add(whitelistPlayer);
-                    AdminToolEntities.GetContext().Blacklist.Remove(blacklistPlayer);
-                    AdminToolEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Пользователь был разблокирован", "Результат", MessageBoxButton.OK, MessageBoxImage.Information);
-                    dgBlackList.ItemsSource = AdminToolEntities.GetContext().Blacklist.ToList();
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                    {
-                        MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                        MessageBox.Show("");
-                        foreach (DbValidationError err in validationError.ValidationErrors)
-                        {
-                            MessageBox.Show(err.ErrorMessage + "");
-                        }
-                    }
-                }
+                AdminToolEntities.GetContext().Whitelist.Add(whitelistPlayer);
+                AdminToolEntities.GetContext().Blacklist.Remove(blacklistPlayer);
+                Library.DatabaseManager.DatabaseEntry();
+                MessageBox.Show("Пользователь был разблокирован", "Результат", MessageBoxButton.OK, MessageBoxImage.Information);
+                dgBlackList.ItemsSource = AdminToolEntities.GetContext().Blacklist.ToList();
             }
         }
+    
 
         private void btnChangeData_Click(object sender, RoutedEventArgs e)
         {

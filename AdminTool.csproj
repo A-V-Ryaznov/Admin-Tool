@@ -148,7 +148,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\Pages\PageStatisticsMain.xaml.cs.xaml">
+    <Page Include="GUI\Pages\PageSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageStatisticsMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,8 +205,11 @@
     <Compile Include="GUI\Pages\PageOnline.xaml.cs">
       <DependentUpon>PageOnline.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Pages\PageStatisticsMain.xaml.cs.xaml.cs">
-      <DependentUpon>PageStatisticsMain.xaml.cs.xaml</DependentUpon>
+    <Compile Include="GUI\Pages\PageSettings.xaml.cs">
+      <DependentUpon>PageSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageStatisticsMain.xaml.cs">
+      <DependentUpon>PageStatisticsMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Pages\PageWhitelist.xaml.cs">
       <DependentUpon>PageWhitelist.xaml</DependentUpon>
@@ -228,7 +235,10 @@
     <Compile Include="GUI\Pages\WorkingWithDatabase\PagaWhitelistAddPlayer.xaml.cs">
       <DependentUpon>PagaWhitelistAddPlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Library\DatabaseManager.cs" />
+    <Compile Include="Library\DataVerificationManager.cs" />
     <Compile Include="Library\PageManager.cs" />
+    <Compile Include="Library\SettingManager.cs" />
     <Compile Include="Library\StyleManager.cs" />
     <Compile Include="Library\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

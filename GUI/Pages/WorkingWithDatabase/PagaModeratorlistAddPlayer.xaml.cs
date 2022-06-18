@@ -37,41 +37,8 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
         }
         private void btnSaveData_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder error = new StringBuilder();
-
-            if (string.IsNullOrWhiteSpace(_currentPlayer.FirstName))
+            if (Library.DataVerificationManager.CheckValueTransferToDatabaseModeratorList(_currentPlayer.FirstName, _currentPlayer.LastName, _currentPlayer.Steam64) == false)
             {
-                error.AppendLine("Укажите имя модератора");
-            }
-            if (string.IsNullOrWhiteSpace(_currentPlayer.LastName))
-            {
-                error.AppendLine("Укажите фамилию модератора");
-            }
-            if (_currentPlayer.Steam64 == null)
-            {
-                error.AppendLine("Введите Steam64");
-
-            }
-            if (_currentPlayer.Steam64 != null)
-            {
-                if (_currentPlayer.Steam64.Length > 17 || _currentPlayer.Steam64.Length < 17)
-                {
-                    error.AppendLine("Steam64 должен быть равен 17 символам");
-                }
-                //проверяем на то, что Steam64 содержит числа
-                foreach (var Steam64 in _currentPlayer.Steam64)
-                {
-                    if (!char.IsDigit(Steam64))
-                    {
-                        error.AppendLine("Steam64 должен содержать в себе только числа");
-                        break;
-                    }
-                }
-            }
-
-            if (error.Length > 0)
-            {
-                MessageBox.Show(error.ToString(), "Были найдены ошибки записи", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -79,20 +46,14 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
             {
                 if (_currentPlayer.ModeratorID == 0)
                 {
-                    DateTime thisDay = DateTime.Today;
+                    DateTime thisDay = DateTime.UtcNow;
                     _currentPlayer.AppointmentDate = thisDay;
                     AdminToolEntities.GetContext().ModeratorList.Add(_currentPlayer);
                 }
-                try
-                {
-                    AdminToolEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Информация сохранена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageModeratorlist());
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
+
+                Library.DatabaseManager.DatabaseEntry();
+                MessageBox.Show("Информация сохранена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageModeratorlist());
             }
         }
 
@@ -102,7 +63,6 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
             {
                 Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageModeratorlist());
             }
-
         }
     }
 }

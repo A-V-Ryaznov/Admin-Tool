@@ -23,17 +23,16 @@
             <TextBlock 
                 Style="{StaticResource PagesTextBlock}"
                 Text="Всего модераторов: x"/>
+            <TextBlock
+                x:Name="tblMaximumCountPlayers"
+                Style="{StaticResource PagesTextBlock}"
+                Text="Вместимость сервера:"/>
+            
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <WindowsFormsHost>
-                <charts:Chart x:Name="chMinimalOnline">
-                    <charts:Chart.Legends>
-                        
-                    </charts:Chart.Legends>
-                </charts:Chart>
-            </WindowsFormsHost>    
+            
         </StackPanel>
     </Grid>
 </Page>

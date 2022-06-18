@@ -44,25 +44,10 @@ namespace AdminTool.GUI.Pages
 
             if (MessageBox.Show($"Вы действительно снять с поста {moderator.LastName}", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                try
-                {
-                    AdminToolEntities.GetContext().ModeratorList.Remove(moderator);
-                    AdminToolEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Модератор был снят с должности", "Результат", MessageBoxButton.OK, MessageBoxImage.Information);
-                    dgModeratorlist.ItemsSource = AdminToolEntities.GetContext().ModeratorList.ToList();
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                    {
-                        MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                        MessageBox.Show("");
-                        foreach (DbValidationError err in validationError.ValidationErrors)
-                        {
-                            MessageBox.Show(err.ErrorMessage + "");
-                        }
-                    }
-                }
+                AdminToolEntities.GetContext().ModeratorList.Remove(moderator);
+                Library.DatabaseManager.DatabaseEntry();
+                MessageBox.Show("Модератор был снят с должности", "Результат", MessageBoxButton.OK, MessageBoxImage.Information);
+                dgModeratorlist.ItemsSource = AdminToolEntities.GetContext().ModeratorList.ToList();
             }
         }
 

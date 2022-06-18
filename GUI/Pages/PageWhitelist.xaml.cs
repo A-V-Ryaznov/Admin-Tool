@@ -59,32 +59,18 @@ namespace AdminTool.GUI.Pages
 
             if (MessageBox.Show($"Вы действительно хотите заблокировать {whitelistPlayer.PlayerNickname}", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                try
-                {
-                    blacklistPlayer.PlayerNickname = whitelistPlayer.PlayerNickname;
-                    blacklistPlayer.Steam64 = whitelistPlayer.Steam64;
-                    blacklistPlayer.ReasonForBlocking = "Введите причину";
-                    DateTime thisDay = DateTime.Now;
-                    blacklistPlayer.DateTimeBanned = thisDay;
+                blacklistPlayer.PlayerNickname = whitelistPlayer.PlayerNickname;
+                blacklistPlayer.Steam64 = whitelistPlayer.Steam64;
+                blacklistPlayer.ReasonForBlocking = "Введите причину";
+                DateTime thisDay = DateTime.Now;
+                blacklistPlayer.DateTimeBanned = thisDay;
 
-                    AdminToolEntities.GetContext().Blacklist.Add(blacklistPlayer);
-                    AdminToolEntities.GetContext().Whitelist.Remove(whitelistPlayer);
-                    AdminToolEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Пользователь был перемещен в черный список","Результат",MessageBoxButton.OK, MessageBoxImage.Information);
-                    dgWhiteList.ItemsSource = AdminToolEntities.GetContext().Whitelist.ToList();
-                }
-                catch(DbEntityValidationException ex)
-                {
-                    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                    {
-                        MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                        MessageBox.Show("");
-                        foreach (DbValidationError err in validationError.ValidationErrors)
-                        {
-                            MessageBox.Show(err.ErrorMessage + "");
-                        }
-                    }
-                }
+                AdminToolEntities.GetContext().Blacklist.Add(blacklistPlayer);
+                AdminToolEntities.GetContext().Whitelist.Remove(whitelistPlayer);
+                Library.DatabaseManager.DatabaseEntry();
+                MessageBox.Show("Пользователь был перемещен в черный список","Результат",MessageBoxButton.OK, MessageBoxImage.Information);
+                dgWhiteList.ItemsSource = AdminToolEntities.GetContext().Whitelist.ToList();
+               
             }
         }
 

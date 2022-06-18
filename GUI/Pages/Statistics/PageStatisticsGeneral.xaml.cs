@@ -27,14 +27,7 @@ namespace AdminTool.GUI.Pages.Statistics
         {
             InitializeComponent();
 
-            //chMinimalOnline.ChartAreas.Add(new ChartArea("Main"));
-
-            //var currentSeries = new Series("Online")
-            //{
-            //    IsValueShownAsLabel = true
-            //};
-            //chMinimalOnline.Series.Add(currentSeries);
-
+            tblMaximumCountPlayers.Text = $"Вместимость сервера: {Library.SettingManager.MaximumCountPlayers}";
         }
     }
 }

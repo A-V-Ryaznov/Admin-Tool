@@ -27,6 +27,7 @@ namespace AdminTool.GUI.Frame
         {
             InitializeComponent();
         }
+
         //Обработка событий
         //Видомость пароля
         private void cbShowPassword_Click(object sender, RoutedEventArgs e)
@@ -69,19 +70,10 @@ namespace AdminTool.GUI.Frame
                     }
 
                 }
-
             }
-            catch (DbEntityValidationException ex)
+            catch
             {
-                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                {
-                    MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                    MessageBox.Show("");
-                    foreach (DbValidationError err in validationError.ValidationErrors)
-                    {
-                        MessageBox.Show(err.ErrorMessage + "");
-                    }
-                }
+                MessageBox.Show("Случилась непредвиденная ошибка связанная с базой данных", "Ошибка подключения", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             //делаем запись в историю посещений

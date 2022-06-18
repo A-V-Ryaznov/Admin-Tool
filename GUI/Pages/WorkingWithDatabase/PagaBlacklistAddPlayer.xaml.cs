@@ -38,49 +38,8 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
 
         private void btnSaveData_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder error = new StringBuilder();
-
-            if (string.IsNullOrWhiteSpace(_currentPlayer.PlayerNickname))
+            if (Library.DataVerificationManager.CheckValueTransferToDatabaseBlackList(_currentPlayer.PlayerNickname, _currentPlayer.Steam64, _currentPlayer.ReasonForBlocking) == false)
             {
-                error.AppendLine("Укажите имя пользователя");
-            }
-            if (_currentPlayer.Steam64 == null)
-            {
-                error.AppendLine("Введите Steam64");
-
-            }
-            if(_currentPlayer.ReasonForBlocking == null)
-            {
-                error.AppendLine("Укажите причину блокировки");
-            }
-            if (_currentPlayer.ReasonForBlocking != null)
-            {
-                if (_currentPlayer.ReasonForBlocking.Length > 40)
-                {
-                    error.AppendLine("Причина блокировки может быть не больше 40 символов");
-                }
-            }
-
-            if (_currentPlayer.Steam64 != null)
-            {
-                if (_currentPlayer.Steam64.Length > 17 || _currentPlayer.Steam64.Length < 17)
-                {
-                    error.AppendLine("Steam64 должен быть равен 17 символам");
-                }
-                //проверяем на то, что Steam64 содержит числа
-                foreach (var Steam64 in _currentPlayer.Steam64)
-                {
-                    if (!char.IsDigit(Steam64))
-                    {
-                        error.AppendLine("Steam64 должен содержать в себе только числа");
-                        break;
-                    }
-                }
-            }
-
-            if (error.Length > 0)
-            {
-                MessageBox.Show(error.ToString(), "Были найдены ошибки записи", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -90,16 +49,10 @@ namespace AdminTool.GUI.Pages.WorkingWithDatabase
                 {
                     AdminToolEntities.GetContext().Blacklist.Add(_currentPlayer);
                 }
-                try
-                {
-                    AdminToolEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Информация сохранена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageBlacklist());
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
+
+                Library.DatabaseManager.DatabaseEntry();
+                MessageBox.Show("Информация сохранена", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                Library.PageManager.MainFrame.Navigate(new GUI.Pages.PageBlacklist());
             }
         }
 
