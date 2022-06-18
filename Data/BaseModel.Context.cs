@@ -35,7 +35,9 @@ namespace AdminTool.Data
         }
     
         public virtual DbSet<Blacklist> Blacklist { get; set; }
+        public virtual DbSet<History> History { get; set; }
         public virtual DbSet<ModeratorList> ModeratorList { get; set; }
+        public virtual DbSet<Online> Online { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Whitelist> Whitelist { get; set; }

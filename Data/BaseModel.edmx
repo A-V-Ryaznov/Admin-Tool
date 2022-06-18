@@ -16,6 +16,14 @@
           <Property Name="DateTimeBanned" Type="datetime" Nullable="false" />
           <Property Name="DateTimeUnbanned" Type="datetime" />
         </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="ModeratorList">
           <Key>
             <PropertyRef Name="ModeratorID" />
@@ -25,6 +33,14 @@
           <Property Name="LastName" Type="nchar" MaxLength="40" Nullable="false" />
           <Property Name="Steam64" Type="nchar" MaxLength="17" Nullable="false" />
           <Property Name="AppointmentDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Online">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlayerCount" Type="int" Nullable="false" />
+          <Property Name="Datatime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -59,7 +75,9 @@
         </EntityType>
         <EntityContainer Name="Хранилище AdminToolModelContainer">
           <EntitySet Name="Blacklist" EntityType="Self.Blacklist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ModeratorList" EntityType="Self.ModeratorList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Online" EntityType="Self.Online" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Whitelist" EntityType="Self.Whitelist" Schema="dbo" store:Type="Tables" />
@@ -80,6 +98,14 @@
           <Property Name="DateTimeBanned" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateTimeUnbanned" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="ModeratorList">
           <Key>
             <PropertyRef Name="ModeratorID" />
@@ -89,6 +115,14 @@
           <Property Name="LastName" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Steam64" Type="String" MaxLength="17" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="AppointmentDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Online">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerCount" Type="Int32" Nullable="false" />
+          <Property Name="Datatime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -123,7 +157,9 @@
         </EntityType>
         <EntityContainer Name="AdminToolEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Blacklist" EntityType="Self.Blacklist" />
+          <EntitySet Name="History" EntityType="Self.History" />
           <EntitySet Name="ModeratorList" EntityType="Self.ModeratorList" />
+          <EntitySet Name="Online" EntityType="Self.Online" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="Whitelist" EntityType="Self.Whitelist" />
@@ -146,6 +182,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="AdminToolModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ModeratorList">
             <EntityTypeMapping TypeName="AdminToolModel.ModeratorList">
               <MappingFragment StoreEntitySet="ModeratorList">
@@ -154,6 +199,15 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Steam64" ColumnName="Steam64" />
                 <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Online">
+            <EntityTypeMapping TypeName="AdminToolModel.Online">
+              <MappingFragment StoreEntitySet="Online">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlayerCount" ColumnName="PlayerCount" />
+                <ScalarProperty Name="Datatime" ColumnName="Datatime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

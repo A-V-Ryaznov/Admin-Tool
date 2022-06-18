@@ -64,7 +64,7 @@ namespace AdminTool.GUI.Pages
                     blacklistPlayer.PlayerNickname = whitelistPlayer.PlayerNickname;
                     blacklistPlayer.Steam64 = whitelistPlayer.Steam64;
                     blacklistPlayer.ReasonForBlocking = "Введите причину";
-                    DateTime thisDay = DateTime.Today;
+                    DateTime thisDay = DateTime.Now;
                     blacklistPlayer.DateTimeBanned = thisDay;
 
                     AdminToolEntities.GetContext().Blacklist.Add(blacklistPlayer);

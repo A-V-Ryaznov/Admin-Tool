@@ -50,6 +50,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,9 +62,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -98,7 +103,13 @@
     <Compile Include="Data\Blacklist.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\History.cs">
+      <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ModeratorList.cs">
+      <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Online.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sysdiagrams.cs">
@@ -125,11 +136,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\Pages\PageHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Pages\PageModeratorlist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\Pages\PageOnline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\PageStatisticsMain.xaml.cs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Pages\PageWhitelist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsAdministrators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsGeneral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsOnline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Pages\Statistics\PageStatisticsPlayers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,11 +192,32 @@
     <Compile Include="GUI\Pages\PageGreeting.xaml.cs">
       <DependentUpon>PageGreeting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Pages\PageHistory.xaml.cs">
+      <DependentUpon>PageHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Pages\PageModeratorlist.xaml.cs">
       <DependentUpon>PageModeratorlist.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Pages\PageOnline.xaml.cs">
+      <DependentUpon>PageOnline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\PageStatisticsMain.xaml.cs.xaml.cs">
+      <DependentUpon>PageStatisticsMain.xaml.cs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Pages\PageWhitelist.xaml.cs">
       <DependentUpon>PageWhitelist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsAdministrators.xaml.cs">
+      <DependentUpon>PageStatisticsAdministrators.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsGeneral.xaml.cs">
+      <DependentUpon>PageStatisticsGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsOnline.xaml.cs">
+      <DependentUpon>PageStatisticsOnline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Statistics\PageStatisticsPlayers.xaml.cs">
+      <DependentUpon>PageStatisticsPlayers.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Pages\WorkingWithDatabase\PagaBlacklistAddPlayer.xaml.cs">
       <DependentUpon>PagaBlacklistAddPlayer.xaml</DependentUpon>
@@ -204,7 +264,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\AdminToolLogo.ico" />
   </ItemGroup>

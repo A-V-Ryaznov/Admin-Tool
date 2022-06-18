@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace AdminTool.GUI.Frame
     /// </summary>
     public partial class WindowAuthorization : Window
     {
+        private bool authorizationIsSuccessful = false;
         public WindowAuthorization()
         {
             InitializeComponent();
@@ -58,6 +60,8 @@ namespace AdminTool.GUI.Frame
                             AdminTool.GUI.Frame.MainWindow mainWindow = new MainWindow();
                             Library.UserManager.UserFirstName = item.FirstName.Trim();
                             Library.UserManager.UserLastName = item.LastName.Trim();
+                            Library.UserManager.Username = item.Username.Trim();
+                            authorizationIsSuccessful = true;
 
                             mainWindow.Show();
                             this.Close();
@@ -67,11 +71,26 @@ namespace AdminTool.GUI.Frame
                 }
 
             }
-            catch(Exception ex)
+            catch (DbEntityValidationException ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                {
+                    MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                    MessageBox.Show("");
+                    foreach (DbValidationError err in validationError.ValidationErrors)
+                    {
+                        MessageBox.Show(err.ErrorMessage + "");
+                    }
+                }
             }
 
+            //делаем запись в историю посещений
+            if (authorizationIsSuccessful == true)
+            {
+                Library.UserManager.WriteVisitLog();
+                authorizationIsSuccessful = false;
+            }
+           
             
         }
 

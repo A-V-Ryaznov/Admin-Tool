@@ -49,7 +49,7 @@ namespace AdminTool.GUI.Pages
                 {
                     whitelistPlayer.PlayerNickname = blacklistPlayer.PlayerNickname;
                     whitelistPlayer.Steam64 = blacklistPlayer.Steam64;
-                    DateTime thisDay = DateTime.Today;
+                    DateTime thisDay = DateTime.Now;
                     whitelistPlayer.RegistrationDate = thisDay;
 
                     AdminToolEntities.GetContext().Whitelist.Add(whitelistPlayer);
