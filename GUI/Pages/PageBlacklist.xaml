@@ -23,8 +23,45 @@
                 VerticalAlignment="Top"
                 Text="Черный список"
                 Style="{StaticResource PagesHeaderTextBlock}"
-                Margin="10,10,0,0"
-        />
+                Margin="10,10,0,0"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0,10,0,0"
+                        VerticalAlignment="Center">
+                <Grid>
+                    <Button
+                        x:Name="btnSearchByName"
+                        Style="{StaticResource MenuButton}"
+                        VerticalContentAlignment="Center"
+                        Click="btnSearchByName_Click">
+                        <TextBlock
+                            Text="Найти (по имени):"
+                             x:Name="tblSearchByName"
+                             Style="{StaticResource PagesTextblockSearch}"
+                            />
+                    </Button>
+                    <Button
+                        x:Name="btnSearchBySteam64"
+                        Visibility="Hidden"
+                        Style="{StaticResource MenuButton}"
+                        VerticalContentAlignment="Center"
+                        Click="btnSearchBySteam64_Click">
+                        <TextBlock
+                            Text="Найти (по Steam64):"
+                             x:Name="tblSearchBySteam64"
+                             Style="{StaticResource PagesTextblockSearch}"
+                            />
+                    </Button>
+                </Grid>
+
+                <TextBox
+                x:Name="tbSearch"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="10,0,10,0"
+                Style="{StaticResource RegularTextBox}"
+                />
+            </StackPanel>
         </Grid>
         <!--Таблица-->
         <Grid Grid.Row="1">
@@ -85,6 +122,21 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+        </Grid>
+        <!--Действия-->
+        <Grid Grid.Row="2">
+            <StackPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                
+                <Button x:Name="btnSearch"
+                        Margin="10,0,0,0"
+                        Style="{StaticResource RegularButton}"
+                        Content="Поиск"
+                        Click="btnSearch_Click"
+                />
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

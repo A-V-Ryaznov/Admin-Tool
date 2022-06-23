@@ -23,9 +23,49 @@
                 VerticalAlignment="Top"
                 Text="Список модераторов"
                 Style="{StaticResource PagesHeaderTextBlock}"
-                Margin="10,10,0,0"
-        />
+                Margin="10,10,0,0"/>
+
+            <!--Панель поиска-->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0,10,0,0"
+                        VerticalAlignment="Center">
+                <Grid>
+                    <Button
+                        x:Name="btnSearchByName"
+                        Style="{StaticResource MenuButton}"
+                        VerticalContentAlignment="Center"
+                        Click="btnSearchByName_Click">
+                        <TextBlock
+                            Text="Найти (по фамилии):"
+                             x:Name="tblSearchByName"
+                             Style="{StaticResource PagesTextblockSearch}"
+                            />
+                    </Button>
+                    <Button
+                        x:Name="btnSearchBySteam64"
+                        Visibility="Hidden"
+                        Style="{StaticResource MenuButton}"
+                        VerticalContentAlignment="Center"
+                        Click="btnSearchBySteam64_Click">
+                        <TextBlock
+                            Text="Найти (по Steam64):"
+                             x:Name="tblSearchBySteam64"
+                             Style="{StaticResource PagesTextblockSearch}"
+                            />
+                    </Button>
+                </Grid>
+
+                <TextBox
+                x:Name="tbSearch"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="10,0,10,0"
+                Style="{StaticResource RegularTextBox}"
+                />
+            </StackPanel>
         </Grid>
+        
         <!--Таблица-->
         <Grid Grid.Row="1">
             <DataGrid 
@@ -98,6 +138,12 @@
                         Style="{StaticResource RegularButton}"
                         Content="Добавить"
                         Click="btnAddPlayer_Click"
+                />
+                <Button x:Name="btnSearch"
+                        Margin="10,0,0,0"
+                        Style="{StaticResource RegularButton}"
+                        Content="Поиск"
+                        Click="btnSearch_Click"
                 />
             </StackPanel>
         </Grid>

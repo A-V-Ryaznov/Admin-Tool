@@ -69,8 +69,71 @@ namespace AdminTool.GUI.Pages
                 dgModeratorlist.ItemsSource = AdminToolEntities.GetContext().ModeratorList.ToList();
             }
         }
+        //Обработка поиска по имени
+        private void btnSearchByName_Click(object sender, RoutedEventArgs e)
+        {
+            btnSearchByName.Visibility = Visibility.Hidden;
+            tbSearch.Clear();
+            btnSearchBySteam64.Visibility = Visibility.Visible;
+        }
+        //Обработка поиска по steam64
+        private void btnSearchBySteam64_Click(object sender, RoutedEventArgs e)
+        {
+            btnSearchBySteam64.Visibility = Visibility.Hidden;
+            tbSearch.Clear();
+            btnSearchByName.Visibility = Visibility.Visible;
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            var data = AdminToolEntities.GetContext();
+
+            if (btnSearchByName.Visibility == Visibility.Visible)
+            {
+                var query =
+                from nickname in data.ModeratorList
+                where nickname.LastName == tbSearch.Text
+                select new
+                {
+                    nickname.ModeratorID,
+                    nickname.LastName,
+                    nickname.Steam64
+                };
+
+                dgModeratorlist.ItemsSource = query.ToList();
+
+                if (string.IsNullOrWhiteSpace(tbSearch.Text))
+                {
+                    MessageBox.Show("Поиск не может быть осуществлен, потому что не указано имя игрока", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (query.ToList().Count < 1)
+                {
+                    MessageBox.Show("Игрок с таким именем не был найден", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            if (btnSearchBySteam64.Visibility == Visibility.Visible)
+            {
+                var query =
+                from steam64 in data.ModeratorList
+                where steam64.LastName == tbSearch.Text
+                select new
+                {
+                    steam64.ModeratorID,
+                    steam64.LastName,
+                    steam64.Steam64
+                };
+
+                dgModeratorlist.ItemsSource = query.ToList();
+
+                if (string.IsNullOrWhiteSpace(tbSearch.Text))
+                {
+                    MessageBox.Show("Поиск не может быть осуществлен, потому что не указан Steam64", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (query.ToList().Count < 1)
+                {
+                    MessageBox.Show("Игрок с таким именем не был найден", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
     }
-
-
-
 }

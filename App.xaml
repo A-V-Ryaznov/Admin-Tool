@@ -185,7 +185,21 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <!--Текст для поиска-->
+        <Style x:Key="PagesTextblockSearch" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Inter"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="{StaticResource AdditionalColor}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource ActionColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        
         <!--Стандартные-->
         <!--Поле для ввода-->
         <Style x:Key="RegularTextBox" TargetType="TextBox">

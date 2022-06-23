@@ -78,5 +78,72 @@ namespace AdminTool.GUI.Pages
         {
             Library.PageManager.MainFrame.Navigate(new GUI.Pages.WorkingWithDatabase.PagaWhitelistAddPlayer((sender as Button).DataContext as Whitelist));
         }
+        //Поиск по имени пользователя
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            var data = AdminToolEntities.GetContext();
+
+            if(btnSearchByName.Visibility == Visibility.Visible)
+            {
+                var query =
+                from nickname in data.Whitelist
+                where nickname.PlayerNickname == tbSearch.Text
+                select new
+                {
+                    nickname.PlayerID,
+                    nickname.PlayerNickname,
+                    nickname.Steam64
+                };
+
+                dgWhiteList.ItemsSource = query.ToList();
+
+                if (string.IsNullOrWhiteSpace(tbSearch.Text))
+                {
+                    MessageBox.Show("Поиск не может быть осуществлен, потому что не указано имя игрока", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (query.ToList().Count < 1)
+                {
+                    MessageBox.Show("Игрок с таким именем не был найден", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            if(btnSearchBySteam64.Visibility == Visibility.Visible)
+            {
+                var query =
+                from steam64 in data.Whitelist
+                where steam64.Steam64 == tbSearch.Text
+                select new
+                {
+                    steam64.PlayerID,
+                    steam64.PlayerNickname,
+                    steam64.Steam64
+                };
+
+                dgWhiteList.ItemsSource = query.ToList();
+
+                if (string.IsNullOrWhiteSpace(tbSearch.Text))
+                {
+                    MessageBox.Show("Поиск не может быть осуществлен, потому что не указан Steam64", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (query.ToList().Count < 1)
+                {
+                    MessageBox.Show("Игрок с таким именем не был найден", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            
+        }
+        //Обработка поиска по имени
+        private void btnSearchByName_Click(object sender, RoutedEventArgs e)
+        {
+            btnSearchByName.Visibility = Visibility.Hidden;
+            tbSearch.Clear();
+            btnSearchBySteam64.Visibility = Visibility.Visible;
+        }
+        //Обработка поиска по steam64
+        private void btnSearchBySteam64_Click(object sender, RoutedEventArgs e)
+        {
+            btnSearchBySteam64.Visibility = Visibility.Hidden;
+            tbSearch.Clear();
+            btnSearchByName.Visibility = Visibility.Visible;
+        }
     }
 }

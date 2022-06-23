@@ -28,20 +28,7 @@ namespace AdminTool.GUI.Frame
             Library.PageManager.MainFrame = MainFrame;
         }
         //Обработка событий
-        //Кнопка для перехода по статистике
-        private void btnStatistics_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new GUI.Pages.PageStatisticsMain());
 
-            tblStatistics.TextDecorations = TextDecorations.Underline;
-
-            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblSettings.TextDecorations = Library.StyleManager.CreateUnderline();
-        }
         //Кнопка для перехода в белый список
         private void btnWhiteList_Click(object sender, RoutedEventArgs e)
         {
@@ -49,12 +36,9 @@ namespace AdminTool.GUI.Frame
 
             tblWhiteList.TextDecorations = TextDecorations.Underline;
 
-            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
             tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblSettings.TextDecorations = Library.StyleManager.CreateUnderline();
         }
         //Кнопка для перехода в черный список
         private void btnBlackList_Click(object sender, RoutedEventArgs e)
@@ -63,12 +47,9 @@ namespace AdminTool.GUI.Frame
 
             tblBlackList.TextDecorations = TextDecorations.Underline;
 
-            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
             tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblSettings.TextDecorations = Library.StyleManager.CreateUnderline();
         }
         //Кнопка для перехода на список модераторов
         private void btnModeratorList_Click(object sender, RoutedEventArgs e)
@@ -77,26 +58,9 @@ namespace AdminTool.GUI.Frame
 
             tblModeratorList.TextDecorations = TextDecorations.Underline;
 
-            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
             tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblSettings.TextDecorations = Library.StyleManager.CreateUnderline();
-        }
-        //Кнопка для перехода в запись в список заполненности
-        private void btnOnlineList_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new GUI.Pages.PageOnline());
-
-            tblOnlineList.TextDecorations = TextDecorations.Underline;
-
-            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblSettings.TextDecorations = Library.StyleManager.CreateUnderline();
         }
         //Кнопка для перехода в историю
         private void btnHistory_Click(object sender, RoutedEventArgs e)
@@ -105,28 +69,10 @@ namespace AdminTool.GUI.Frame
 
             tblHistory.TextDecorations = TextDecorations.Underline;
 
-            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
             tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
             tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblSettings.TextDecorations = Library.StyleManager.CreateUnderline();
         }
-        //Кнопка для перехода в настройки приложения
-        private void btnSettings_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new GUI.Pages.PageSettings());
-
-            tblSettings.TextDecorations = TextDecorations.Underline;
-
-            tblStatistics.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblWhiteList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblBlackList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblModeratorList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblOnlineList.TextDecorations = Library.StyleManager.CreateUnderline();
-            tblHistory.TextDecorations = Library.StyleManager.CreateUnderline();
-        }
-
         //Кнопка для выхода из аккунта
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
